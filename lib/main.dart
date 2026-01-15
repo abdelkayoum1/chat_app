@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:frt/application_complete/Register.dart';
 import 'package:frt/application_complete/applicationcomplete_login.dart';
@@ -10,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:frt/cubit/chat_cubit.dart';
 import 'package:frt/firebase_options.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -29,7 +31,7 @@ void main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVhaGpiZWlzaXh6am1ia2h1aW5lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAyMTQ4NTYsImV4cCI6MjA3NTc5MDg1Nn0.Vnss2bv_IAWTK941Au3gfqD010yCK1H4t0cQ6D4bXE8',
   );
-  runApp(myapp());
+  runApp(BlocProvider(create: (context) => ChatCubit(), child: myapp()));
 }
 
 class myapp extends StatefulWidget {
@@ -173,7 +175,6 @@ class Appp extends StatelessWidget {
         children: [share, call, message],
       ),
     );
-    ;
   }
 }
 
